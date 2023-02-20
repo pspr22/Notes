@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelStore;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -110,7 +111,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /*@Override
+
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
 
@@ -125,15 +128,22 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
 
             case R.id.top_menu:
-                Intent intent = new Intent(MainActivity.this,NoteActivity.class);
-                startActivity(intent);
+                if(item.getTitle().equals("list View")){
+                    item.setTitle("grid View");
+                    recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                }
+                else if(item.getTitle().equals("grid View")){
+                    item.setTitle("list View");
+                    recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+                }
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
 
         }
 
-    }*/
+    }
 
 
     /*

@@ -7,7 +7,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardNote"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="175dp"
         android:layout_margin="5dp"
         app:cardBackgroundColor="#E2FBC860"
         app:cardCornerRadius="20dp"

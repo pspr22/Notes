@@ -1,9 +1,12 @@
 package com.example.notes;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +16,6 @@ public class EditNoteActivity extends AppCompatActivity {
 
     EditText etTitle;
     EditText etDescription;
-    Button save,cancel;
     int noteId;
 
     @Override
@@ -25,29 +27,14 @@ public class EditNoteActivity extends AppCompatActivity {
 
         etTitle = findViewById(R.id.etTitleu);
         etDescription  = findViewById(R.id.etDescriptionu);
-        save = findViewById(R.id.btnsaveu);
-        cancel = findViewById(R.id.btncancelu);
+        etTitle.setTextIsSelectable(true);
+        etDescription.setTextIsSelectable(true);
+
 
         getData();
 
 
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                Toast.makeText(EditNoteActivity.this, "Nothing Changed", Toast.LENGTH_SHORT).show();
-                finish();
-
-            }
-        });
-
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                UpdateNote();
-            }
-        });
 
     }
 
@@ -68,6 +55,28 @@ public class EditNoteActivity extends AppCompatActivity {
         }
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.tick,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch(item.getItemId()){
+            case R.id.tick:
+                UpdateNote();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+
+    }
+
 
     public void getData(){
 
